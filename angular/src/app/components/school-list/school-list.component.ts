@@ -18,10 +18,12 @@ export class SchoolListComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  editSchool(id: string){
+  editSchool(id: string) {
     this.router.navigate(['school', 'edit', id]);
   }
 
-
+  listClassrooms() {
+    this.router.navigate(['classroom-list']);
+  }
 
 }
