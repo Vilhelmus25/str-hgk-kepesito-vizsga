@@ -16,9 +16,9 @@ exports.update = (buildingId, className) => {
         .then(() => buildingId)
         .then(bID => {
             bID.classrooms.push(classroom._id);
-            return crs.save();
+            return bID.save();
         })
         .then(() => classroom);
 };
 
-exports.getAll = () => Building.find().populate('Classroom');
+exports.getAll = () => Building.find().populate('classrooms');

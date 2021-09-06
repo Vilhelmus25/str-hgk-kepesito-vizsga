@@ -19,7 +19,7 @@ exports.updateBuilding = (req, res, next) => {
     const validationErrors = new Model(req.body).validateSync();
     if (validationErrors) {
         return next(
-            new createError.BadRequest(validationErrors)
+            new httpError.BadRequest(validationErrors)
         );
     }
 
@@ -29,7 +29,7 @@ exports.updateBuilding = (req, res, next) => {
         })
         .catch(err => {
             console.error(err)
-            return next(new createError.InternalServerError('Could not update classroom'));
+            return next(new httpError.InternalServerError('Could not update building'));
         });
 }
 
@@ -40,6 +40,6 @@ exports.getAllBuildingWithClassrooms = (req, res, next) => {
             res.json(list);
         }).catch(err => {
             console.error(err);
-            return new createError.InternalServerError('List could not send')
+            return new httpError.InternalServerError('List could not send')
         })
 };
